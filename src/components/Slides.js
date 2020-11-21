@@ -72,11 +72,12 @@ const Slides=(props)=>{
     },[slideIndex])
     return(
         <>
-     <h1>{props.slides[slideIndex].title}</h1>
-     <p>{props.slides[slideIndex].text}</p>
-     <button id="Prev" onClick={prev} ref={idPrev} style={{disabled:true}}> Prev</button>
-     <button id="Next" ref={idNext} onClick={next}>Next</button>
-     <button id="Restart" ref={idRestart} onClick={restart} style={{disabled:true}}>Restart</button>
+     <h1 data-testid="title">{props.slides[slideIndex].title}</h1>
+     <p data-testid="text">{props.slides[slideIndex].text}</p>
+     <button data-testid="button-next" ref={idNext} onClick={next}>Next</button>
+     <button data-testid="button-restart" ref={idRestart} onClick={restart} style={{disabled:true}}>Restart</button>
+     <button data-testid="button-prev" onClick={prev} ref={idPrev} style={{disabled:true}}> Prev</button>
+     
      </>
     )
 }
