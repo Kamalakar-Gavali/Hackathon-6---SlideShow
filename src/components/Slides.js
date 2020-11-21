@@ -49,7 +49,7 @@ const Slides=(props)=>{
             setSildeIndex(slideIndex-1);
         }
     }
-    useEffect(()=>{
+    /*useEffect(()=>{
         if(slideIndex==0)
         {
             //idPrev.current.style.pointerEvents='none';
@@ -69,7 +69,7 @@ const Slides=(props)=>{
             idRestart.current.style.disabled="true"
         }
 
-    },[slideIndex])
+    },[slideIndex])*/
     return(
         <>
      <h1 data-testid="title">{props.slides[slideIndex].title}</h1>
