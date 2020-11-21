@@ -14,17 +14,7 @@ const Slides=(props)=>{
     const next=()=>{
         console.log("In Next Function");
         setSildeIndex(slideIndex+1);
-        /*if(slideIndex==slideSize-1)
-        {
-            idNext.current.style.pointerEvents='none';
-            //idNext.current.style.pointerEvents='none';
-        }
-        else
-        {
-         //   idNext.current.style.pointerEvents='auto';
-           idNext.current.style.pointerEvents='auto';
-            setSildeIndex(slideIndex+1);
-        }*/
+        
         
     }
     const restart=()=>{
@@ -33,15 +23,7 @@ const Slides=(props)=>{
         {
         setSildeIndex(0);
         }
-        /*if(slideIndex!=0)
-        {
-          idNext.current.style.pointerEvents='auto';
-         setSildeIndex(0);
-        }
-        else
-        {
-            idNext.current.style.pointerEvents='none';
-        }*/
+        
         
     }
     const prev=()=>{
@@ -54,38 +36,41 @@ const Slides=(props)=>{
             //idPrev.current.style.pointerEvents='none';
             //idPrev.current.style.disabled='true';
         }
-        /*else
-        {
-            idPrev.current.style.pointerEvents='none';
-        }*/
+        
         
     }
     useEffect(()=>{
         if(slideIndex==0)
         {
-            //idPrev.current.style.pointerEvents='none';
-            idPrev.current.style.pointerEvents='none';
-            idRestart.current.style.pointerEvents='none';;
+            
+            idPrev.current.style.disabled=true;
+            idRestart.current.style.disabled=true;;
+            // idPrev.current.style.pointerEvents='none';
+            // idRestart.current.style.pointerEvents='none';;
         }
         if(slideIndex==slideSize-1)
         {
-            idNext.current.style.pointerEvents='none';
+            idNext.current.style.disabled=true;
             //idNext.current.style.pointerEvents='none';
+            
         }
         else{
-            idNext.current.style.pointerEvents='auto';
+            idNext.current.style.disabled=false;
+            //idNext.current.style.pointerEvents='auto';
         }
         if(slideIndex>0)
         {
-            idRestart.current.style.pointerEvents='auto';
-            
-            idPrev.current.style.pointerEvents='auto';
+            idRestart.current.style.disabled=false;
+            idPrev.current.style.disabled=false;
+            // idRestart.current.style.pointerEvents='auto';
+            // idPrev.current.style.pointerEvents='auto';
         }
         else
         {
-
-            idRestart.current.style.pointerEvents='none';
-            idPrev.current.style.pointerEvents='none';
+            idRestart.current.style.disabled=true;
+            idPrev.current.style.disabled=true;
+            // idRestart.current.style.pointerEvents='none';
+            // idPrev.current.style.pointerEvents='none';
         }
         return ()=>"";
 
@@ -94,8 +79,8 @@ const Slides=(props)=>{
         <>
      <h1 data-testid="title">{props.slides[slideIndex].title}</h1>
      <p data-testid="text">{props.slides[slideIndex].text}</p>
-     <button data-testid="button-prev" onClick={prev} ref={idPrev} style={{pointerEvents:"none"}}> Prev</button>
-     <button data-testid="button-restart" ref={idRestart} onClick={restart} style={{pointerEvents:"none"}}>Restart</button>
+     <button data-testid="button-prev" onClick={prev} ref={idPrev} style={{disabled:true}}> Prev</button>
+     <button data-testid="button-restart" ref={idRestart} onClick={restart} style={{disabled:true}}>Restart</button>
      <button data-testid="button-next" ref={idNext} onClick={next}>Next</button>
      
      </>
