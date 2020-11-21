@@ -76,7 +76,7 @@ const Slides=(props)=>{
      <p>{props.slides[slideIndex].text}</p>
      <button id="Prev" onClick={prev} ref={idPrev} style={{disabled:true}}> Prev</button>
      <button id="Next" ref={idNext} onClick={next}>Next</button>
-     <button id="Restart" onClick={restart} style={{disabled:true}}>Restart</button>
+     <button id="Restart" ref={idRestart} onClick={restart} style={{disabled:true}}>Restart</button>
      </>
     )
 }
