@@ -83,7 +83,7 @@ const Slides=(props)=>{
         }
         else
         {
-            
+
             idRestart.current.style.pointerEvents='none';
             idPrev.current.style.pointerEvents='none';
         }
