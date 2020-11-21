@@ -8,7 +8,7 @@ const Slides=(props)=>{
     const [slideSize,setSlideSize]=useState(props.slides.length)
     const idNext=React.createRef();
     const idPrev=React.createRef();
-    const arr=props;
+
 
     const next=()=>{
         console.log(slideIndex);
@@ -53,9 +53,9 @@ const Slides=(props)=>{
         <>
      <h1>{props.slides[slideIndex].title}</h1>
      <p>{props.slides[slideIndex].text}</p>
-     <button onClick={prev} ref={idPrev} style={{disabled:true}}> Prev</button>
-     <button ref={idNext} onClick={next}>Next</button>
-     <button onClick={restart} style={{disabled:true}}>Restart</button>
+     <button id="Prev" onClick={prev} ref={idPrev} style={{disabled:true}}> Prev</button>
+     <button id="Next" ref={idNext} onClick={next}>Next</button>
+     <button id="Restart" onClick={restart} style={{disabled:true}}>Restart</button>
      </>
     )
 }
