@@ -1,4 +1,4 @@
-import React, {Component, useState} from "react";
+import React, {Component, useEffect, useState} from "react";
 import App from'./App';
 
 
@@ -8,6 +8,7 @@ const Slides=(props)=>{
     const [slideSize,setSlideSize]=useState(props.slides.length)
     const idNext=React.createRef();
     const idPrev=React.createRef();
+    const idRestart=React.createRef();
 
 
     const next=()=>{
@@ -48,7 +49,27 @@ const Slides=(props)=>{
             setSildeIndex(slideIndex-1);
         }
     }
-    
+    useEffect(()=>{
+        if(slideIndex==0)
+        {
+            //idPrev.current.style.pointerEvents='none';
+            idPrev.current.style.disabled='true';
+        }
+        if(slideIndex==slideSize-1)
+        {
+            idNext.current.style.disabled='true';
+            //idNext.current.style.pointerEvents='none';
+        }
+        if(slideIndex>0)
+        {
+            idRestart.current.style.enabled="true"
+        }
+        else
+        {
+            idRestart.current.style.disabled="true"
+        }
+
+    },[slideIndex])
     return(
         <>
      <h1>{props.slides[slideIndex].title}</h1>
