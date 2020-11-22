@@ -13,39 +13,42 @@ const App = (props) => {
     const idRestart=React.createRef();
 
     useEffect(()=>{
+        console.log(slideIndex+" "+ slideSize);
       if(slideIndex==0)
       {
           
-          idPrev.current.style.disabled=true;
-          idRestart.current.style.disabled=true;;
+          idPrev.current.setAttribute('disabled','disabled');
+          idRestart.current.setAttribute('disabled','disabled');
+          console.log("insde 1 if");
           // idPrev.current.style.pointerEvents='none';
           // idRestart.current.style.pointerEvents='none';;
       }
       if(slideIndex==slideSize-1)
       {
-          idNext.current.style.disabled=true;
+          idNext.current.setAttribute('disabled','disabled');
+          console.log("in");
           //idNext.current.style.pointerEvents='none';
           
       }
       else{
-          idNext.current.style.disabled=false;
+          idNext.current.removeAttribute('disabled');
           //idNext.current.style.pointerEvents='auto';
       }
       if(slideIndex>0)
       {
-          idRestart.current.style.disabled=false;
-          idPrev.current.style.disabled=false;
+          idRestart.current.removeAttribute('disabled');
+          idPrev.current.removeAttribute('disabled');
           // idRestart.current.style.pointerEvents='auto';
           // idPrev.current.style.pointerEvents='auto';
       }
       else
       {
-          idRestart.current.style.disabled=true;
-          idPrev.current.style.disabled=true;
+          idRestart.current.setAttribute('disabled','disabled');
+          idPrev.current.setAttribute('disabled','disabled');
           // idRestart.current.style.pointerEvents='none';
           // idPrev.current.style.pointerEvents='none';
       }
-      return ()=>"";
+      
 
   },[slideIndex]);
     const next=()=>{
@@ -64,7 +67,7 @@ const App = (props) => {
         
     }
     const prev=()=>{
-        console.log("In Prev Function");
+        console.log("In Prev Function"+slideIndex);
         //setSildeIndex(slideIndex-1);
         if(slideIndex!=0)
         {
@@ -82,9 +85,10 @@ const App = (props) => {
     {/* <Slides slides={props.slides}/> */}
      <h1 data-testid="title">{props.slides[slideIndex].title}</h1>
      <p data-testid="text">{props.slides[slideIndex].text}</p>
-     <button data-testid="button-prev" onClick={prev} ref={idPrev} style={{disabled:true}}> Prev</button>
-     <button data-testid="button-restart" ref={idRestart} onClick={restart} style={{disabled:true}}>Restart</button>
-     <button data-testid="button-next" ref={idNext} onClick={next}>Next</button>
+     <button data-testid="button-prev" onClick={prev} ref={idPrev} > Prev</button>
+     <button data-testid="button-restart" ref={idRestart} onClick={restart} >Restart</button>
+     <button   data-testid="button-next" ref={idNext}  onClick={next}>Next</button>
+
     </>
   )
 }
